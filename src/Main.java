@@ -30,23 +30,17 @@ public class Main extends ConsoleProgram {
         new Main().start(args);
     }
 
+    /* DELAY, USEFUL. stack overflow: How do I make a delay in Java? */
     public void run() {
         println("ConsecutiveHeads");
-        int nFlips;
-        int nConsecHeads = 0;
-        for(nFlips = 1; nConsecHeads <= 3; nFlips++) {
-            boolean b = rg.nextBoolean();
-            println((new TailsOrHeads(b)).toString());
-            if(b) {
-                nConsecHeads++;
+        while(true) {
+            TailsOrHeads flip = new TailsOrHeads(rg.nextBoolean());
+            println(flip.toString());
+            if(flip.getConsecHeadsCounter() == 3) {
+                println("It took " + flip.getFlipsCounter() + " flips to get 3 consecutive heads.");
+                break;
             }
-            else {
-                nConsecHeads = 0;
-            }
-            if(nConsecHeads == 3) {break;}
         }
-
-        println("It took " + nFlips + " flips to get 3 consecutive heads.");
     }
 
     /* Instance variables */

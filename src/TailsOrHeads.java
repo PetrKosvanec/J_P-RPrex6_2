@@ -18,11 +18,34 @@ public class TailsOrHeads extends ConsoleProgram {
 
     /**
      * Creates a new TailsOrHeads object (a coin flip object)
-     * with the in-parameter specified true or false value;
+     * with the in-parameter specified true or false value.
+     *
+     * Manipulates - class variables - counters: Increments the flipsCounter.
+     * Increments the consecHeadsCounter in case of Heads,
+     * or in case of Tails initializes consecHeadsCounter to zero.
      */
 
     public TailsOrHeads(boolean b) {
         heads = b;
+        flipsCounter++;
+        if(heads) { consecHeadsCounter++; }
+        else { consecHeadsCounter = 0; }
+    }
+
+    /**
+     * Gets the integer value of consecutive heads pertaining to this flip.
+     * @return The consecutive heads counter related to this flip
+     */
+    public int getFlipsCounter() {
+        return flipsCounter;
+    }
+
+    /**
+     * Gets the integer value of consecutive heads pertaining to this flip.
+     * @return The consecutive heads counter related to this flip
+     */
+    public int getConsecHeadsCounter() {
+        return consecHeadsCounter;
     }
 
     /**
@@ -37,6 +60,10 @@ public class TailsOrHeads extends ConsoleProgram {
             return "Tails";
         }
     }
+
+    /* Class variables */
+    private static int consecHeadsCounter;
+    private static int flipsCounter;
 
     /* Instance variables */
     private boolean heads;
